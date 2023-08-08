@@ -1,0 +1,23 @@
+<h2>Edit Movie - {{data.title}}</h2>
+
+<form method="POST" action="/movies/{{data._id}}/edit">
+    <!-- Input fields for each attribute of the movie -->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{data.title}}" required><br>
+
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" value="{{data.genre}}" required><br>
+
+    <label for="plot">Plot:</label>
+    <input type="text" id="plot" name="plot" value="{{data.plot}}" required><br>
+
+    <!-- Select and option tags for handling the cast attribute -->
+    <label for="cast">Cast:</label>
+    <select id="cast" name="cast" multiple>
+        {{#each data.cast}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select><br>
+
+    <button type="submit">Update Movie</button>
+</form>
